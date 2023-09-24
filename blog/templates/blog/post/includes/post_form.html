@@ -1,0 +1,16 @@
+{% load bootstrap4 %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-6">
+      <h2>Add a new Post</h2>
+
+      <form action="{% url 'blog:post_publish' %}" method="post">
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        <p>
+          <button class="btn btn-outline-success m-2">Add Post</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

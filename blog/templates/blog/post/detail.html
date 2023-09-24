@@ -1,0 +1,47 @@
+{% extends 'blog/base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}
+  {{ post.title }}
+{% endblock %}
+{% block content %}
+  <button class="btn btn-success float-end m-2"><a class="text-light text-decoration-none" href="{% url 'blog:post_share' post.id %}">Share this post</a></button>
+
+  <div class="container">
+    <h1>{{ post.title }}</h1>
+    <p class="date">Published {{ post.publish }} by {{ post.user }}</p>
+    {{ post.body|linebreaks }}
+    {% with comments.count as total_comments %}
+      <h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
+    {% endwith %}
+    {% include 'blog/post/includes/comment_form.html' %}
+
+    {% for comment in comments %}
+    <div class="comment">
+        <p class="info">Comment {{ forloop.counter }} by {{ comment.name }}
+          {{ comment.created }}</p>
+        {{ comment.body|linebreaks }}
+      </div>
+
+      {% empty %}
+      <p>There are no comments.</p>
+    {% endfor %}
+  </div>
+  <h2>Similar posts</h2>
+  {% for post in similar_posts %}
+  <div class="container-fluid">
+    <div class="row">
+        <div class="card" >
+          <div class="card-body">
+            <h5 class="card-title"><a class="text-decoration-none" href="{{ post.get_absolute_url }}">{{ post.title }} </a></h5>
+            <h6 class="text-muted">Published {{ post.publish }} by {{post.user}}</h6>
+            <p class="card-text"> {{ post.body|truncatewords:10|linebreaks }}</p>
+            <a class="text-decoration-none" href="{{ post.get_absolute_url }}" class="btn btn-outline-success ">Show Post</a>
+          </div>
+        </div>
+    </div>
+  </div>
+  {% empty %}
+  There are no similar posts yet.
+  {% endfor %}
+{% endblock %}

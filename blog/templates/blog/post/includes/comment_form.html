@@ -1,0 +1,16 @@
+{% load bootstrap4 %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-6">
+      <h2>Add a new comment</h2>
+
+      <form action="{% url 'blog:post_comment' post.id %}" method="post">
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        <p class="text-success">
+          <button class="btn btn-outline-success m-2">Add comment</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

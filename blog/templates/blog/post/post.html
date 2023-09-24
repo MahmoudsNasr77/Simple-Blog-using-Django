@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}
+  Add a Post
+{% endblock %}
+{% block content %}
+  {% if comment %}
+    <h2>Your post has been added.</h2>
+    <p>
+      <a class="text-decoration-none" href="{{ post.get_absolute_url }}">Back to the post</a>
+    </p>
+  {% else %}
+    {% include 'blog/post/includes/post_form.html' %}
+  {% endif %}
+{% endblock %}
