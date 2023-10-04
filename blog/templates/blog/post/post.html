@@ -5,12 +5,14 @@
   Add a Post
 {% endblock %}
 {% block content %}
+ <div class="container-fluid">
   {% if comment %}
-    <h2>Your post has been added.</h2>
-    <p>
-      <a class="text-decoration-none" href="{{ post.get_absolute_url }}">Back to the post</a>
-    </p>
-  {% else %}
-    {% include 'blog/post/includes/post_form.html' %}
-  {% endif %}
+  <h2>Your post has been added.</h2>
+  <p>
+    <a class="text-decoration-none" href="{{ post.get_absolute_url }}">Back to the post</a>
+  </p>
+{% else %}
+  {% include 'blog/post/includes/post_form.html' %}
+{% endif %}
+ </div>
 {% endblock %}

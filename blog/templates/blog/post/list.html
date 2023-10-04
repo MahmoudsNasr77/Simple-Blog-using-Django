@@ -5,12 +5,17 @@
 
 {% block title %}My Blog{% endblock %}
 {% block content %}
+
 <div class ="container-fluid m-2 ">
+
 <div class="row">
+ 
   {% if tag %}
   <h2>Posts tagged with "{{ tag.name }}"</h2>
   {% endif %}
+
 {% for post in posts %}
+
 <div class="col-lg-4 p-2">
 <div class="card " style="width: 500px; height: 250px;" >
    <div class="card-body">
@@ -36,7 +41,7 @@
 {% endfor %}
 </div>
 </div>
- {% include "pagination.html" with page=posts %}
+{% include "pagination.html" with page=posts %}
 </div>
 {% endblock %}
 
