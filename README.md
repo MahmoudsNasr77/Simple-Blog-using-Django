@@ -44,11 +44,11 @@ bash
 python manage.py makemigrations
 python manage.py migrate
 ```
-### 6. Create Superuser (for admin access)
+### 5. Create Superuser (for admin access)
 ```bash
 python manage.py createsuperuser
 ```
-### 7. Run the Development Server
+### 6. Run the Development Server
 ```bash
 python manage.py runserver
 Visit http://127.0.0.1:8000/ in your browse
